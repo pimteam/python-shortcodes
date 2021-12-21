@@ -4,17 +4,23 @@
 Create and use WordPress-style shortcodes in your Python based app.
 
 ## Example
-
+    # static output
     def my_function(atts = None, enclosed_content = ''):
         return "Output of my function"
     
-    Shortcodes.add_shortcode('my-function', my_function)
+    # using attributes and enclosed content (pretty simple example)    
+    def tags_around(atts = None, enclosed_content = ''):
+        tag = atts['tag']
+        return '<' + tag + '>' + enclosed_content + '</' + tag + '>'
     
-    content = "Testing: [my-function]"
-    print(Shortcodes.do_shortcodes(content)
+    Shortcodes.add_shortcode('my-function', my_function)
+    Shortcodes.add_shortcode('tags-around', tags_around)
+    
+    content = """Testing: [my-function]. This will be [tags_around tag="b"]bold[/tags_around]."""
+    print(Shortcodes.do_shortcodes(content))
     
     # will generate output:
-    Testing: Output of my function
+    Testing: Output of my function. This will be <b>bold</b>.
 
 ## Why Use Them?
 
