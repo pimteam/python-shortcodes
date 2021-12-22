@@ -32,7 +32,7 @@ The shortcodes are most often used in CMS-es to allow authors or editors to incl
 
 ## Documentation
 1. You can simply copy the library in a working folder and import:
-    from shortcodes import Shortcodes
+    <code>from shortcodes import Shortcodes</code>
     
 2. Create your custom shortcode functions. Each shortcode function or a class method should accept two optional parameters: atts and enclosed_content
 
